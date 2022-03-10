@@ -17,6 +17,10 @@ const start = () => {
 
   // Routes/Controllers
   productController.addProduct({ app, api_prefix: API_PREFIX });
+  productController.getProductById({ app, api_prefix: API_PREFIX });
+  productController.updateProductById({ app, api_prefix: API_PREFIX });
+  productController.deleteProductById({ app, api_prefix: API_PREFIX });
+  productController.getProducts({ app, api_prefix: API_PREFIX });
 
   // Error Handler
   app.use(ErrorHandler);
