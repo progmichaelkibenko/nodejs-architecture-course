@@ -2,7 +2,7 @@ const { Response, ResponseError } = require("../common");
 
 const ErrorHandler = (err, req, res, next) => {
   const error = new ResponseError({
-    statusCode: err.status || 500,
+    statusCode: err.statusCode || 500,
     msg: err.msg || "Our highly trained monkey robots broke something",
     cause: err.cause,
     url: req.originalUrl,

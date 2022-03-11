@@ -10,7 +10,7 @@ const addProduct = async ({ product }) => {
 };
 
 const getProductById = async ({ id }) => {
-  return db.products.find((item) => item.id === id) || null;
+  return db.products.find((item) => item.id === id && !item.deletedAt) || null;
 };
 
 const deleteProductById = async ({ id }) => {
@@ -32,7 +32,7 @@ const updateProductById = async ({ id, product }) => {
 };
 
 const getProducts = async () => {
-  return db.products;
+  return db.products.filter((item) => !item.deletedAt);
 };
 
 module.exports = {

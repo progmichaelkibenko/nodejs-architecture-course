@@ -18,46 +18,46 @@ const addProduct = ({ app, api_prefix = "legacy" }) => {
 };
 
 const getProductById = ({ app, api_prefix = "legacy" }) => {
-  try {
-    app.get(`/${api_prefix}/${ENTITY_NAME}/:id`, async (req, res, next) => {
+  app.get(`/${api_prefix}/${ENTITY_NAME}/:id`, async (req, res, next) => {
+    try {
       const { id } = req.params;
       const result = await productService.getProductById({ id });
       const response = new Response({ ok: true, content: result });
       res.json(response);
       next();
-    });
-  } catch (err) {
-    next(err);
-  }
+    } catch (err) {
+      next(err);
+    }
+  });
 };
 
 const updateProductById = ({ app, api_prefix = "legacy" }) => {
-  try {
-    app.put(`/${api_prefix}/${ENTITY_NAME}/:id`, async (req, res, next) => {
+  app.put(`/${api_prefix}/${ENTITY_NAME}/:id`, async (req, res, next) => {
+    try {
       const { id } = req.params;
       const { product } = req.body;
       const result = await productService.updateProductById({ id, product });
       const response = new Response({ ok: true, content: result });
       res.json(response);
       next();
-    });
-  } catch (err) {
-    next(err);
-  }
+    } catch (err) {
+      next(err);
+    }
+  });
 };
 
 const deleteProductById = ({ app, api_prefix = "legacy" }) => {
-  try {
-    app.delete(`/${api_prefix}/${ENTITY_NAME}/:id`, async (req, res, next) => {
+  app.delete(`/${api_prefix}/${ENTITY_NAME}/:id`, async (req, res, next) => {
+    try {
       const { id } = req.params;
       const result = await productService.deleteProductById({ id });
       const response = new Response({ ok: true, content: result });
       res.json(response);
       next();
-    });
-  } catch (err) {
-    next(err);
-  }
+    } catch (err) {
+      next(err);
+    }
+  });
 };
 
 const getProducts = ({ app, api_prefix = "legacy" }) => {

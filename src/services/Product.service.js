@@ -1,4 +1,8 @@
+const { isUuid } = require("uuidv4");
+const { ResponseError } = require("../frameworks/common");
+
 const { Product } = require("../entities");
+
 const {
   addProduct: addProductRepository,
   getProductById: getProductByIdRepository,
@@ -12,6 +16,12 @@ const addProduct = async ({ product }) => {
 };
 
 const getProductById = async ({ id }) => {
+  const isValidId = isUuid(id);
+  if (!isValidId) {
+    return Promise.reject(
+      new ResponseError({ statusCode: 400, msg: "Invalid URL" })
+    );
+  }
   return getProductByIdRepository({ id });
 };
 
